@@ -19,7 +19,7 @@ const FormFirst = () => {
         <>
             {/* Form Step One */}
 
-            <form>
+           
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -44,7 +44,7 @@ const FormFirst = () => {
                 <div className="text-info text-center">
                     You have an account? <a href="" class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
                 </div>
-            </form>
+            
         </>
     );
 }

@@ -20,7 +20,7 @@ const RegisterForm = () => {
                 <div className="row pt-5 justify-content-center">
                     <div className="col-4">
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false" >
-
+                            <form >
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <FormFirst/>
@@ -31,7 +31,7 @@ const RegisterForm = () => {
                                     <img src="..." class="d-block w-100" alt="..." />
                                 </div>
                             </div>
-
+                            </form>
                         </div>
 
                     </div>
