@@ -5,12 +5,14 @@ import '../css/Register.css'
 
 //Components
 import FormFirst from "./formFirst";
+import FormSecond from "./formSecond";
+import FormThird from "./formThird";
 
 const RegisterForm = () => {
-
+    // link page
     const LINK_NAVIGATE = useNavigate();
 
-   
+
     return (
 
         <>
@@ -21,21 +23,26 @@ const RegisterForm = () => {
                     <div className="col-4">
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false" >
                             <form >
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <FormFirst/>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <FormFirst />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <FormSecond />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <FormThird />
+                                    </div>
                                 </div>
-                                <div class="carousel-item">
+                                <hr className="text-white" />
+                                <div className="text-info text-center">
+                                    You have an account? <a href="" class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="..." class="d-block w-100" alt="..." />
-                                </div>
-                            </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
+
             </div>
         </>
     );

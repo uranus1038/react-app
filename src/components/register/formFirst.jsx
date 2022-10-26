@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import '../css/Register.css'
 
 const FormFirst = () => {
-
+    //link page
     const LINK_NAVIGATE = useNavigate();
 
     // Func autoTab
@@ -40,10 +40,7 @@ const FormFirst = () => {
 
                 <button id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="next">Next <i className="fas fa-caret-right"></i></button>
-                <hr className="text-white" />
-                <div className="text-info text-center">
-                    You have an account? <a href="" class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
-                </div>
+              
             
         </>
     );
