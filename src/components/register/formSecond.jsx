@@ -1,18 +1,22 @@
 import React from "react";
 import { useState } from "react";
 const FormSecond = () => {
-
-    let pass_ch = false; // check value password 
-
     // Func check password easy > very good password
-    function doc() {
-        if (document.getElementById("password").value.length > 9) {
-            document.getElementById("alert-password").innerHTML = "Good" ; 
-            document.getElementById("alert-password").className = "alert alert-success"
+    function doc(id,id_alert) {
+        if (document.getElementById(id).value.length > 9) {
+            document.getElementById(id_alert).innerHTML = "Good" ; 
+            document.getElementById(id_alert).className = "alert alert-success"
         }else
         {
-            document.getElementById("alert-password").innerHTML = "easy" ; 
-            document.getElementById("alert-password").className = "alert alert-warning"
+            if(document.getElementById(id).value.length < 1)
+            {
+                document.getElementById(id_alert).innerHTML = "" ; 
+                document.getElementById(id_alert).className = "";
+            }else
+            {
+                document.getElementById(id_alert).innerHTML = "easy" ; 
+                document.getElementById(id_alert).className = "alert alert-warning"
+            }
 
         }
 
@@ -29,7 +33,7 @@ const FormSecond = () => {
                 <div class="input-group flex-nowrap ">
                     <input name="passWord" placeholder="" type="password" class="form-control" id="password"
                         onChange={
-                            () => { doc() }
+                            () => { doc("password" , "alert-password") }
                         } />
                 </div>
             </div>

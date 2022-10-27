@@ -12,7 +12,9 @@ function App() {
     <div className="App">
       <Router>
          <Routes>
+          {/* render index */}
           <Route path="/" element={<Index/>}/>
+          {/* render Register */}
           <Route path="/register" element={<Register/>}/>
         </Routes>
       </Router>

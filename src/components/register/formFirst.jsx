@@ -1,16 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 //css
 import '../css/Register.css'
 
 const FormFirst = () => {
-    //link page
-    const LINK_NAVIGATE = useNavigate();
-
     // Func autoTab
     const auto = (id, id_tab, leng) => {
+        // if password > value.dd/mm/yyyy
         if (document.getElementById(id).value.length > leng) {
-
+            //focus id
             document.getElementById(id_tab).focus();
         }
     }
@@ -18,12 +15,13 @@ const FormFirst = () => {
 
         <>
             {/* Form Step One */}
-
-           
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <div id="emailHelp" class="form-text">This email will be used to edit information.</div>
+                    <input 
+                    // input value email
+                   
+                    type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <div id="email" class="form-text">This email will be used to edit information.</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label text-white">Brithday</label>

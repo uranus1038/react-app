@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 //css
 import '../css/Register.css'
 
@@ -9,10 +9,16 @@ import FormSecond from "./formSecond";
 import FormThird from "./formThird";
 
 const RegisterForm = () => {
-    // link page
-    const LINK_NAVIGATE = useNavigate();
-
-
+    //setState
+    const [email , setEmail ] = useState("")
+    const [day , setDay ] = useState("")
+    const [month , setMonth ] = useState("")
+    const [year , setYear ] = useState("")
+    const [userName , setUserName ] = useState("")
+    const [passWord , setPassword ] = useState("")
+    const [gender , setGender ] = useState("")
+    const [nametag , setNametag ] = useState("")
+    
     return (
 
         <>
@@ -22,7 +28,7 @@ const RegisterForm = () => {
                 <div className="row pt-5 justify-content-center">
                     <div className="col-4">
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false" >
-                            <form >
+                            
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <FormFirst />
@@ -38,7 +44,7 @@ const RegisterForm = () => {
                                 <div className="text-info text-center">
                                     You have an account? <a href="" class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
                                 </div>
-                            </form>
+                           
                         </div>
                     </div>
                 </div>
