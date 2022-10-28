@@ -17,20 +17,14 @@ const RegisterForm = () => {
     const [userName , setUserName ] = useState("")
     const [passWord , setPassword ] = useState("")
     const [gender , setGender ] = useState("")
-    const [nametag , setNametag ] = useState("")
-
-    //test
-    function test()
+    const [nametag , setNametag ] = useState("")    
+    function requestRegister()
     {
-        console.log(email);
-        console.log(day);
+        console.log(gender);
     }
-    
     return (
-
         <>
             {/* RegisterForm*/}
-
             <div className="container-fluid vh-100 UMI_BG_SKYBLUE_X">
                 <div className="row pt-5 justify-content-center">
                     <div className="col-4">
@@ -38,13 +32,13 @@ const RegisterForm = () => {
                             
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <FormFirst email={setEmail} day={setDay}/>
+                                        <FormFirst email={setEmail} day={setDay} month={setMonth} year={setYear}/>
                                     </div>
                                     <div class="carousel-item">
-                                        <FormSecond />
+                                        <FormSecond userName={setUserName} passWord={setPassword} gender={setGender}/>
                                     </div>
                                     <div class="carousel-item">
-                                        <FormThird test={test}/>
+                                        <FormThird requestRegister={requestRegister} nametag={setNametag}/>
                                     </div>
                                 </div>
                                 <hr className="text-white" />

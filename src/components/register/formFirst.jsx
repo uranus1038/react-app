@@ -2,7 +2,7 @@ import React from "react";
 //css
 import '../css/Register.css'
 
-const FormFirst = ({email , day}) => {
+const FormFirst = ({email , day , month , year}) => {
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
@@ -34,9 +34,16 @@ const FormFirst = ({email , day}) => {
                             // input value day
                             day(event.target.value)}} />
                         <input placeholder="01" type="text" class="form-control" id="mm"
-                            onChange={() => { auto("mm", "yyyy", 1) }} />
+                            onChange={(event) => { auto("mm", "yyyy", 1)
+                             // input value month
+                             month(event.target.value)
+                             }} />
                         <input placeholder="2022" type="text" class="form-control" id="yyyy"
-                            onChange={() => { auto("yyyy", "btn-next", 3) }} />
+                            onChange={(event) => { 
+                                auto("yyyy", "btn-next", 3) 
+                                // input value year
+                                year(event.target.value)
+                                }} />
                     </div>
 
                 </div>

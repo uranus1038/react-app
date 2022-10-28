@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-const FormSecond = () => {
+const FormSecond = ({userName , passWord , gender}) => {
     // Func check password easy > very good password
     function doc(id,id_alert) {
         if (document.getElementById(id).value.length > 9) {
@@ -26,25 +26,33 @@ const FormSecond = () => {
             {/* form step two  */}
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label text-white">UserName</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <input 
+                // Input Value userName
+                onChange={(event)=>{userName(event.target.value)}}
+                type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label text-white">PassWord</label>
                 <div class="input-group flex-nowrap ">
                     <input name="passWord" placeholder="" type="password" class="form-control" id="password"
+                     // Input Value password
                         onChange={
-                            () => { doc("password" , "alert-password") }
+                            (event) => { doc("password" , "alert-password") 
+                            passWord(event.target.value)
+                        }
                         } />
                 </div>
             </div>
             <div class="" role="alert" id="alert-password"> </div>
 
             <label for="exampleInputEmail1" class="form-label text-white">Gender</label>
-            <select class="form-select mb-3" aria-label="Default select example">
+            <select
+             // Input Value gender
+            onClick={(event)=>{gender(event.target.value)}} 
+            class="form-select mb-3" aria-label="Default select example">
                 <option selected>Other</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select>
             <button id="btn-next" class="btn btn-secondary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev"><i className="fas fa-caret-left"></i> Back</button>
