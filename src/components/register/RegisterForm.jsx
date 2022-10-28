@@ -18,6 +18,13 @@ const RegisterForm = () => {
     const [passWord , setPassword ] = useState("")
     const [gender , setGender ] = useState("")
     const [nametag , setNametag ] = useState("")
+
+    //test
+    function test()
+    {
+        console.log(email);
+        console.log(day);
+    }
     
     return (
 
@@ -31,13 +38,13 @@ const RegisterForm = () => {
                             
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <FormFirst />
+                                        <FormFirst email={setEmail} day={setDay}/>
                                     </div>
                                     <div class="carousel-item">
                                         <FormSecond />
                                     </div>
                                     <div class="carousel-item">
-                                        <FormThird />
+                                        <FormThird test={test}/>
                                     </div>
                                 </div>
                                 <hr className="text-white" />

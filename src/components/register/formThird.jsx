@@ -1,5 +1,5 @@
 import React from "react";
-const FormThird =()=>
+const FormThird =({test})=>
 {
    
     return(
@@ -12,7 +12,9 @@ const FormThird =()=>
             <button id="btn-next" class="btn btn-secondary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev"><i className="fas fa-caret-left"></i> Back</button>
             <button 
-            id="btn-next" class="ms-2 btn btn-primary fw-bolder" 
+            onClick={()=>{test()}}
+            id="btn-next" 
+            class="ms-2 btn btn-primary fw-bolder" 
             type="button">Register <i className="fas fa-paper-plane"></i></button>
         </>
     );
