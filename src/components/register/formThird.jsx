@@ -16,8 +16,7 @@ const FormThird =({requestRegister , nametag})=>
                 data-bs-slide="prev"><i className="fas fa-caret-left"></i> Back</button>
             <button 
             // send data to api 
-            onClick={()=>{requestRegister()
-            
+            onClick={()=>{requestRegister()          
             }}
             id="btn-next" 
             class="ms-2 btn btn-primary fw-bolder" 

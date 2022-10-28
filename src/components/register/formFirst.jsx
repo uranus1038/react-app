@@ -3,12 +3,29 @@ import React from "react";
 import '../css/Register.css'
 
 const FormFirst = ({email , day , month , year}) => {
+    //validate check
+    var validate  ; 
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
         if (document.getElementById(id).value.length > leng) {
             //focus id
             document.getElementById(id_tab).focus();
+        }
+    }
+    function validator()
+    {
+        if (document.getElementById("email").value.length < 1) {
+            document.getElementById("err-email").innerHTML ="err";
+            document.getElementById("err-email").style.color ="pink";
+            document.getElementById("btn-next").setAttribute("data-bs-slide","err");
+        }else
+        {
+            document.getElementById("err-email").style.color ="gray";
+            document.getElementById("err-email").innerHTML ="This email will be used to edit information.";
+            document.getElementById("btn-next").setAttribute("data-bs-slide","next");
+            document.getElementById("btn-next").click();
+            document.getElementById("btn-next").setAttribute("data-bs-slide","err");
         }
     }
     return (
@@ -20,8 +37,8 @@ const FormFirst = ({email , day , month , year}) => {
                     <input 
                     // input value email
                    onChange={(event)=>{email(event.target.value)}}
-                    type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <div id="email" class="form-text">This email will be used to edit information.</div>
+                    type="email" class="form-control" id="email" aria-describedby="emailHelp" />
+                    <div id="err-email" class="form-text">This email will be used to edit information.</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label text-white">Brithday</label>
@@ -48,8 +65,10 @@ const FormFirst = ({email , day , month , year}) => {
 
                 </div>
 
-                <button id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">Next <i className="fas fa-caret-right"></i></button>
+                <button
+                onClick={validator}
+                id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
+                    >Next <i className="fas fa-caret-right"></i></button>
               
             
         </>

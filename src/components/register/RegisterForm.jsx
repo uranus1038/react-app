@@ -18,9 +18,13 @@ const RegisterForm = () => {
     const [passWord , setPassword ] = useState("")
     const [gender , setGender ] = useState("")
     const [nametag , setNametag ] = useState("")    
-    function requestRegister()
+    function  requestRegister(event)
     {
-        console.log(gender);
+       if(email =="")
+       {
+        
+       }
+        
     }
     return (
         <>
