@@ -21,6 +21,44 @@ const FormSecond = ({userName , passWord , gender}) => {
         }
 
     }
+
+    function validator() {
+        let validate = [];
+        let email = document.getElementById("email").value.length;
+        let day = document.getElementById("dd").value.length;
+        let month = document.getElementById("mm").value.length;
+        let year = document.getElementById("yyyy").value.length;
+        let text_0 = "Please fill the correct information.";
+        if (email < 15) {
+            validate.push("err");
+            document.getElementById("errs-log").innerHTML = text_0;
+            document.getElementById("errs-log").style.color = "pink";
+        }
+        if (day < 2) {
+            validate.push("err");
+            document.getElementById("errs-log").innerHTML = text_0;
+            document.getElementById("errs-log").style.color = "pink";
+        }
+        if (month  < 2) {
+            validate.push("err")
+            document.getElementById("errs-log").innerHTML = text_0;
+            document.getElementById("errs-log").style.color = "pink";
+        }
+        if (year < 4) {
+            validate.push("err")
+            document.getElementById("errs-log").innerHTML = text_0;
+            document.getElementById("errs-log").style.color = "pink";
+        }
+
+        if (validate.length == 0) {
+            document.getElementById("errs-log").innerHTML = "";
+            document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
+            document.getElementById("btn-next").click();
+            document.getElementById("btn-next").setAttribute("data-bs-slide", "validate");
+        }
+
+    }
+
     return (
         <>
             {/* form step two  */}
@@ -29,15 +67,15 @@ const FormSecond = ({userName , passWord , gender}) => {
                 <input 
                 // Input Value userName
                 onChange={(event)=>{userName(event.target.value)}}
-                type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                type="text" class="form-control" id="userName" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label text-white">PassWord</label>
                 <div class="input-group flex-nowrap ">
-                    <input name="passWord" placeholder="" type="password" class="form-control" id="password"
+                    <input name="passWord" placeholder="" type="password" class="form-control" id="passWord"
                      // Input Value password
                         onChange={
-                            (event) => { doc("password" , "alert-password") 
+                            (event) => { doc("passWord" , "alert-password") 
                             passWord(event.target.value)
                         }
                         } />
