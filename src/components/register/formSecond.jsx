@@ -21,40 +21,26 @@ const FormSecond = ({userName , passWord , gender}) => {
         }
 
     }
-
+    //check Input user
     function validator() {
         let validate = [];
-        let email = document.getElementById("email").value.length;
-        let day = document.getElementById("dd").value.length;
-        let month = document.getElementById("mm").value.length;
-        let year = document.getElementById("yyyy").value.length;
-        let text_0 = "Please fill the correct information.";
-        if (email < 15) {
+        if (document.getElementById("userName").value.length < 1) {
             validate.push("err");
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
-        if (day < 2) {
-            validate.push("err");
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
+        if (document.getElementById("passWord").value.length < 1) {
+            validate.push("err");  
         }
-        if (month  < 2) {
+        if (document.getElementById("gender").value === "Other" || document.getElementById("gender").value === "") {
             validate.push("err")
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
-        if (year < 4) {
-            validate.push("err")
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
-        }
-
         if (validate.length == 0) {
-            document.getElementById("errs-log").innerHTML = "";
+            document.getElementById("errs-log-code-02").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
             document.getElementById("btn-next").click();
             document.getElementById("btn-next").setAttribute("data-bs-slide", "validate");
+        }else{
+            document.getElementById("errs-log-code-02").innerHTML = "Please fill the correct information.";
+            document.getElementById("errs-log-code-02").style.color = "pink";
         }
 
     }
@@ -87,15 +73,19 @@ const FormSecond = ({userName , passWord , gender}) => {
             <select
              // Input Value gender
             onClick={(event)=>{gender(event.target.value)}} 
-            class="form-select mb-3" aria-label="Default select example">
+            class="form-select mb-3" aria-label="Default select example" id="gender">
                 <option selected>Other</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
-            <button id="btn-next" class="btn btn-secondary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
+            {/* log errs  */}
+            <div className="mb-3" id="errs-log-code-02" ></div>
+            <button id="btn-prev" class="btn btn-secondary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev"><i className="fas fa-caret-left"></i> Back</button>
-            <button id="btn-next" class="ms-2 btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">Next <i className="fas fa-caret-right"></i></button>
+            <button 
+            onClick={validator}
+            id="btn-next" class="ms-2 btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
+                >Next <i className="fas fa-caret-right"></i></button>
         </>
     );
 }

@@ -3,8 +3,6 @@ import React from "react";
 import '../css/Register.css'
 
 const FormFirst = ({ email, day, month, year }) => {
-    //validate check
-    var validate;
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
@@ -16,37 +14,28 @@ const FormFirst = ({ email, day, month, year }) => {
     // chcek user input
     function validator() {
         let validate = [];
-        let email = document.getElementById("email").value.length;
-        let day = document.getElementById("dd").value.length;
-        let month = document.getElementById("mm").value.length;
-        let year = document.getElementById("yyyy").value.length;
-        let text_0 = "Please fill the correct information.";
-        if (email < 15) {
+       
+        if (document.getElementById("email").value.length < 15) {
             validate.push("err");
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
-        if (day < 2) {
+        if (document.getElementById("dd").value.length < 2) {
             validate.push("err");
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
-        if (month  < 2) {
+        if (document.getElementById("mm").value.length  < 2) {
             validate.push("err")
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
-        if (year < 4) {
+        if (document.getElementById("yyyy").value.length < 4) {
             validate.push("err")
-            document.getElementById("errs-log").innerHTML = text_0;
-            document.getElementById("errs-log").style.color = "pink";
         }
 
         if (validate.length == 0) {
-            document.getElementById("errs-log").innerHTML = "";
+            document.getElementById("errs-log-code-01").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
             document.getElementById("btn-next").click();
             document.getElementById("btn-next").setAttribute("data-bs-slide", "validate");
+        }else{
+            document.getElementById("errs-log-code-01").innerHTML = "Please fill the correct information.";
+            document.getElementById("errs-log-code-01").style.color = "pink";
         }
 
     }
@@ -88,7 +77,7 @@ const FormFirst = ({ email, day, month, year }) => {
                         }} />
                 </div>
             </div>
-            <div class="mb-3" id="errs-log"></div>
+            <div class="mb-3" id="errs-log-code-01"></div>
             <button
                 onClick={validator}
                 id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
