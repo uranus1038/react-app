@@ -1,8 +1,11 @@
 import React from "react";
+import axios  from "axios";
 //css
 import '../css/Register.css'
 
 const FormFirst = ({ email, day, month, year }) => {
+    //global varuble set value check
+    let req_email ;
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
@@ -27,6 +30,9 @@ const FormFirst = ({ email, day, month, year }) => {
         if (document.getElementById("yyyy").value.length < 4) {
             validate.push("err")
         }
+        if (document.getElementById("text-code-101").value !== 'ok') {
+            validate.push("err")
+        }
 
         if (validate.length == 0) {
             document.getElementById("errs-log-code-01").innerHTML = "";
@@ -39,6 +45,30 @@ const FormFirst = ({ email, day, month, year }) => {
         }
 
     }
+    // api check email 
+    function validator_email()
+    {
+        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-validate',
+                data :{
+                    email : req_email
+                } })
+                .then((respon)=>
+                {
+                    if(respon.data.status == 'ok')
+                    {
+                        document.querySelector("#text-code-101").innerHTML = "yes"
+                    }else
+                    {
+                        if(document.getElementById("text-code-101").value.length< 1)
+                        {
+                            document.querySelector("#text-code-101").innerHTML = "This email will be used to edit information."
+                        }else
+                        {
+                            document.querySelector("#text-code-101").innerHTML = "no"
+                        }
+                    }
+                });
+    }
     return (
 
         <>
@@ -47,9 +77,11 @@ const FormFirst = ({ email, day, month, year }) => {
                 <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
                 <input
                     // input value email
-                    onChange={(event) => { email(event.target.value) }}
+                    onChange={(event) => { email(event.target.value) ;
+                        req_email = event.target.value  ;
+                        validator_email(); }}
                     type="email" class="form-control" id="email" aria-describedby="emailHelp" />
-                <div  class="form-text">This email will be used to edit information.</div>
+                <div id="text-code-101" class="form-text">This email will be used to edit information.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label text-white">Brithday</label>

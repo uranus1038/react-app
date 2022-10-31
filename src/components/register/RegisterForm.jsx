@@ -20,10 +20,7 @@ const RegisterForm = () => {
     const [nametag , setNametag ] = useState("")    
     function  requestRegister(event)
     {
-       if(email =="")
-       {
-        
-       }
+       console.log(email);
         
     }
     return (
@@ -36,7 +33,7 @@ const RegisterForm = () => {
                             
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <FormFirst email={setEmail} day={setDay} month={setMonth} year={setYear}/>
+                                        <FormFirst email_={email} email={setEmail} day={setDay} month={setMonth} year={setYear}/>
                                     </div>
                                     <div class="carousel-item">
                                         <FormSecond userName={setUserName} passWord={setPassword} gender={setGender}/>
