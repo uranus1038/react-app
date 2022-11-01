@@ -59,13 +59,9 @@ const FormFirst = ({ email, day, month, year }) => {
                         document.querySelector("#text-code-101").innerHTML = "yes"
                     }else
                     {
-                        if(document.getElementById("text-code-101").value.length< 1)
-                        {
-                            document.querySelector("#text-code-101").innerHTML = "This email will be used to edit information."
-                        }else
-                        {
+                        
                             document.querySelector("#text-code-101").innerHTML = "no"
-                        }
+                        
                     }
                 });
     }
