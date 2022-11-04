@@ -21,16 +21,16 @@ const FormFirst = ({ email, day, month, year }) => {
         if (document.getElementById("email").value.length < 15) {
             validate.push("err");
         }
-        if (document.getElementById("dd").value.length < 2) {
+        if (document.getElementById("dd").value.length < 2 || document.getElementById("dd").value.length > 2) {
             validate.push("err");
         }
-        if (document.getElementById("mm").value.length  < 2) {
+        if (document.getElementById("mm").value.length  < 2 || document.getElementById("mm").value.length > 2) {
             validate.push("err")
         }
-        if (document.getElementById("yyyy").value.length < 4) {
+        if (document.getElementById("yyyy").value.length < 4 || document.getElementById("yyyy").value.length > 4) {
             validate.push("err")
         }
-        if (document.getElementById("text-code-101").value !== 'ok') {
+        if (document.getElementById("text-code-101").value === 'no') {
             validate.push("err")
         }
 
@@ -46,22 +46,40 @@ const FormFirst = ({ email, day, month, year }) => {
 
     }
     // api check email 
-    function validator_email()
+    function validator_email(event)
     {
+        event.preventDefault(); // not refresh
         axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-validate',
                 data :{
                     email : req_email
                 } })
                 .then((respon)=>
                 {
-                    if(respon.data.status == 'ok')
+                    if(respon.data.status === 'no')
                     {
-                        document.querySelector("#text-code-101").innerHTML = "yes"
+                        document.querySelector("#text-code-101").innerHTML = "This account already has a user.";
+                        document.querySelector("#text-code-101").style.color = "pink"; 
+
                     }else
                     {
-                        
-                            document.querySelector("#text-code-101").innerHTML = "no"
-                        
+                        if(req_email)
+                        {
+                            if(req_email.length < 15)
+                            {
+                                document.querySelector("#text-code-101").style.color = "pink"; 
+                                document.querySelector("#text-code-101").innerHTML = "Please enter a valid email address.";
+                            }
+                            else
+                            {
+                                document.querySelector("#text-code-101").style.color = "#42ec6b"; 
+                                document.querySelector("#text-code-101").innerHTML = "Account is available";
+                            }
+                        }
+                        else    
+                        {
+                            document.querySelector("#text-code-101").style.color = "gray"; 
+                            document.querySelector("#text-code-101").innerHTML = "This email will be used to edit information.";
+                        }
                     }
                 });
     }
@@ -75,7 +93,7 @@ const FormFirst = ({ email, day, month, year }) => {
                     // input value email
                     onChange={(event) => { email(event.target.value) ;
                         req_email = event.target.value  ;
-                        validator_email(); }}
+                        validator_email(event); }}
                     type="email" class="form-control" id="email" aria-describedby="emailHelp" />
                 <div id="text-code-101" class="form-text">This email will be used to edit information.</div>
             </div>
