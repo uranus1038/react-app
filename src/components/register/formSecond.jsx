@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 const FormSecond = ({userName , passWord , gender}) => {
+    let req_userName ;
     // Func check password easy > very good password
     function doc(id,id_alert) {
         if (document.getElementById(id).value.length > 9) {
@@ -44,7 +45,19 @@ const FormSecond = ({userName , passWord , gender}) => {
         }
 
     }
-
+    //api check email 
+    const validator_userName =(event)=>
+    {
+        event.preventDefault(); // not refresh
+        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-validate',
+        data :{
+            userName : req_userName
+        } })
+        .then((respon)=>
+        {
+            
+        });
+    }
     return (
         <>
             {/* form step two  */}
