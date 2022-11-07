@@ -45,11 +45,11 @@ const FormFirst = ({ email, day, month, year }) => {
         }
 
     }
-    // api check email 
+    // api verify email 
     function validator_email(event)
     {
         event.preventDefault(); // not refresh
-        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-validate',
+        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-verify',
                 data :{
                     email : req_email
                 } })

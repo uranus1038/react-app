@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 const FormSecond = ({userName , passWord , gender}) => {
     let req_userName ;
     // Func check password easy > very good password
@@ -45,17 +46,42 @@ const FormSecond = ({userName , passWord , gender}) => {
         }
 
     }
-    //api check email 
+    //api verify email 
     const validator_userName =(event)=>
     {
         event.preventDefault(); // not refresh
-        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-validate',
+        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/userName-verify',
         data :{
             userName : req_userName
         } })
         .then((respon)=>
         {
-            
+            if(respon.data.status === 'no')
+                    {
+                        document.querySelector("#text-code-102").innerHTML = "This account already has a user.";
+                        document.querySelector("#text-code-102").style.color = "pink"; 
+
+                    }else
+                    {
+                        if(req_userName)
+                        {
+                            if(req_userName.length < 4)
+                            {
+                                document.querySelector("#text-code-102").style.color = "pink"; 
+                                document.querySelector("#text-code-102").innerHTML = "Please enter a valid email address.";
+                            }
+                            else
+                            {
+                                document.querySelector("#text-code-102").style.color = "#42ec6b"; 
+                                document.querySelector("#text-code-102").innerHTML = "Account is available";
+                            }
+                        }
+                        else    
+                        {
+                            document.querySelector("#text-code-102").style.color = "gray"; 
+                            document.querySelector("#text-code-102").innerHTML = "This email will be used to edit information.";
+                        }
+                    }
         });
     }
     return (
@@ -65,8 +91,13 @@ const FormSecond = ({userName , passWord , gender}) => {
                 <label for="exampleInputEmail1" class="form-label text-white">UserName</label>
                 <input 
                 // Input Value userName
-                onChange={(event)=>{userName(event.target.value)}}
+                onChange={(event)=>{userName(event.target.value);
+                    validator_userName(event) ;
+                    req_userName = event.target.value;
+                }
+            }
                 type="text" class="form-control" id="userName" aria-describedby="emailHelp" />
+                <div id="text-code-102" class="form-text"></div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label text-white">PassWord</label>
