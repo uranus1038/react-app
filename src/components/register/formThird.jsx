@@ -14,10 +14,9 @@ const FormThird = ({ requestRegister, nametag }) => {
             }
         })
             .then((respon) => {
-                if (respon.data.status === 'no') {
+                if (respon.data.status == 'no') {
                     document.querySelector("#text-code-103").innerHTML = "This name already has a user.";
                     document.querySelector("#text-code-103").style.color = "pink";
-
                 } else {
                     if (req_name) {
                         if (req_name.length < 4) {
@@ -45,7 +44,7 @@ const FormThird = ({ requestRegister, nametag }) => {
         }
         if (validate.length == 0) {
             document.getElementById("text-code-103").innerHTML = null ;
-            window.location.replace('/');
+            requestRegister() ; 
         }else{
             document.getElementById("text-code-103").style.color = "pink";
             document.getElementById("text-code-103").innerHTML = "Name-Tag must be more than 4 characters.";
@@ -72,7 +71,6 @@ const FormThird = ({ requestRegister, nametag }) => {
             <button
                 // send data to api 
                 onClick={() => {
-                    requestRegister()
                     validator()
                 }}
                 id="btn-next"

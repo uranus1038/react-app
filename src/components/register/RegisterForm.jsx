@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import {useState} from "react";
 //css
@@ -17,10 +18,29 @@ const RegisterForm = () => {
     const [userName , setUserName ] = useState("")
     const [passWord , setPassword ] = useState("")
     const [gender , setGender ] = useState("")
-    const [nametag , setNametag ] = useState("")    
+    const [nametag , setNametag ] = useState("")  
+    // brithday day concatnate
+    let brithday = `${day}-${month}-${year} `  ;
+    // api resgister
     function  requestRegister(event)
     {
-       console.log(email);
+       axios.post('http://localhost:8000/api/register/success', {
+        email : email , 
+        brithday : brithday ,
+        userName : userName , 
+        passWord : passWord ,
+        gender : gender , 
+        nametag : nametag , 
+       }).then((respon)=>{
+        if(respon.data.status === "ok")
+        {
+           return  window.location.replace('/');
+        }
+        else
+        {
+            return ; 
+        }
+       });
         
     }
     return (
