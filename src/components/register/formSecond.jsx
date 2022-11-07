@@ -16,7 +16,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                 document.getElementById(id_alert).className = "";
             }else
             {
-                document.getElementById(id_alert).innerHTML = "easy" ; 
+                document.getElementById(id_alert).innerHTML = "Easy,Username must be more than 8 characters." ; 
                 document.getElementById(id_alert).className = "alert alert-warning"
             }
 
@@ -26,13 +26,16 @@ const FormSecond = ({userName , passWord , gender}) => {
     //check Input user
     function validator() {
         let validate = [];
-        if (document.getElementById("userName").value.length < 1) {
+        if (document.getElementById("userName").value.length < 4) {
             validate.push("err");
         }
-        if (document.getElementById("passWord").value.length < 1) {
+        if (document.getElementById("passWord").value.length < 8) {
             validate.push("err");  
         }
-        if (document.getElementById("gender").value === "Other" || document.getElementById("gender").value === "") {
+        if (document.getElementById("userName").value === 'no') {
+            validate.push("err");  
+        }
+        if (document.getElementById("gender").value === "Other" || !document.getElementById("gender").value) {
             validate.push("err")
         }
         if (validate.length == 0) {
@@ -68,7 +71,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                             if(req_userName.length < 4)
                             {
                                 document.querySelector("#text-code-102").style.color = "pink"; 
-                                document.querySelector("#text-code-102").innerHTML = "Please enter a valid email address.";
+                                document.querySelector("#text-code-102").innerHTML = "Username must be more than 4 characters.";
                             }
                             else
                             {
@@ -78,8 +81,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                         }
                         else    
                         {
-                            document.querySelector("#text-code-102").style.color = "gray"; 
-                            document.querySelector("#text-code-102").innerHTML = "This email will be used to edit information.";
+                            document.querySelector("#text-code-102").innerHTML = null;
                         }
                     }
         });

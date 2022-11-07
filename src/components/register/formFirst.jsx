@@ -57,7 +57,7 @@ const FormFirst = ({ email, day, month, year }) => {
                 {
                     if(respon.data.status === 'no')
                     {
-                        document.querySelector("#text-code-101").innerHTML = "This account already has a user.";
+                        document.querySelector("#text-code-101").innerHTML = "This email already has a user.";
                         document.querySelector("#text-code-101").style.color = "pink"; 
 
                     }else
