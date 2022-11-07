@@ -72,7 +72,7 @@ const FormFirst = ({ email, day, month, year }) => {
                             else
                             {
                                 document.querySelector("#text-code-101").style.color = "#42ec6b"; 
-                                document.querySelector("#text-code-101").innerHTML = "Account is available";
+                                document.querySelector("#text-code-101").innerHTML = "Email-Address is available";
                             }
                         }
                         else    
