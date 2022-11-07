@@ -92,8 +92,8 @@ const FormSecond = ({userName , passWord , gender}) => {
                 <input 
                 // Input Value userName
                 onChange={(event)=>{userName(event.target.value);
-                    validator_userName(event) ;
                     req_userName = event.target.value;
+                    validator_userName(event) ;
                 }
             }
                 type="text" class="form-control" id="userName" aria-describedby="emailHelp" />
