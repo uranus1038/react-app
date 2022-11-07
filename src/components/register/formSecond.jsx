@@ -33,7 +33,7 @@ const FormSecond = ({userName , passWord , gender}) => {
         if (document.getElementById("passWord").value.length < 8) {
             validate.push("err");  
         }
-        if (document.getElementById("userName").value === 'no') {
+        if (document.getElementById("text-code-102").innerHTML === "This account already has a user.") {
             validate.push("err");  
         }
         if (document.getElementById("gender").value === "Other" || !document.getElementById("gender").value) {
@@ -124,6 +124,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                 <option selected>Other</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
+                <option value="LGBTQ+">LGBTQ+</option>
             </select>
             {/* log errs  */}
             <div className="mb-3" id="errs-log-code-02" ></div>

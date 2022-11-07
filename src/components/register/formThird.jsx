@@ -14,7 +14,7 @@ const FormThird = ({ requestRegister, nametag }) => {
             }
         })
             .then((respon) => {
-                if (respon.data.status == 'no') {
+                if (respon.data.status === 'no') {
                     document.querySelector("#text-code-103").innerHTML = "This name already has a user.";
                     document.querySelector("#text-code-103").style.color = "pink";
                 } else {
@@ -36,18 +36,24 @@ const FormThird = ({ requestRegister, nametag }) => {
     }
     function validator() {
         let validate = [];
-        if (document.getElementById("nameTag").value === 'no') {
+        if (document.getElementById("text-code-103").innerHTML === 'This name already has a user.') {
             validate.push("err");
         }
         if (document.getElementById("nameTag").value.length < 4) {
             validate.push("err");
         }
-        if (validate.length == 0) {
+        if (validate.length === 0) {
             document.getElementById("text-code-103").innerHTML = null ;
             requestRegister() ; 
         }else{
-            document.getElementById("text-code-103").style.color = "pink";
-            document.getElementById("text-code-103").innerHTML = "Name-Tag must be more than 4 characters.";
+            if(!document.getElementById("text-code-103").innerHTML)
+            {
+                document.getElementById("text-code-103").style.color = "pink";
+                document.getElementById("text-code-103").innerHTML = "Please fill the correct information.";
+            }else
+            {
+                
+            }
         }
     }
 

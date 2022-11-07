@@ -5,7 +5,8 @@ import '../css/Register.css'
 
 const FormFirst = ({ email, day, month, year }) => {
     //global varible set value check
-    let req_email ;
+    let req_email  ;
+    var  respon_email ;
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
@@ -30,11 +31,7 @@ const FormFirst = ({ email, day, month, year }) => {
         if (document.getElementById("yyyy").value.length < 4 || document.getElementById("yyyy").value.length > 4) {
             validate.push("err")
         }
-        if (document.getElementById("text-code-101").value === "This email already has a user.") {
-            validate.push("err")
-        }
-
-        if (validate.length === 0) {
+        if (validate.length == 0) {
             document.getElementById("errs-log-code-01").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
             document.getElementById("btn-next").click();
@@ -59,6 +56,7 @@ const FormFirst = ({ email, day, month, year }) => {
                     {
                         document.querySelector("#text-code-101").innerHTML = "This email already has a user.";
                         document.querySelector("#text-code-101").style.color = "pink"; 
+
                     }else
                     {
                         if(req_email)
