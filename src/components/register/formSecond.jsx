@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 const FormSecond = ({userName , passWord , gender}) => {
+    //global varible set value check
     let req_userName ;
     // Func check password easy > very good password
     function doc(id,id_alert) {
@@ -16,7 +17,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                 document.getElementById(id_alert).className = "";
             }else
             {
-                document.getElementById(id_alert).innerHTML = "Easy,Username must be more than 8 characters." ; 
+                document.getElementById(id_alert).innerHTML = "Easy, Password must be more than 8 characters." ; 
                 document.getElementById(id_alert).className = "alert alert-warning"
             }
 
@@ -50,7 +51,7 @@ const FormSecond = ({userName , passWord , gender}) => {
 
     }
     //api verify email 
-    const validator_userName =(event)=>
+    const verify_userName =(event)=>
     {
         event.preventDefault(); // not refresh
         axios({method : 'POST' ,url : 'http://localhost:8000/api/register/userName-verify',
@@ -95,7 +96,7 @@ const FormSecond = ({userName , passWord , gender}) => {
                 // Input Value userName
                 onChange={(event)=>{userName(event.target.value);
                     req_userName = event.target.value;
-                    validator_userName(event) ;
+                    verify_userName(event) ;
                 }
             }
                 type="text" class="form-control" id="userName" aria-describedby="emailHelp" />

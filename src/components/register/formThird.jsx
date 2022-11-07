@@ -1,9 +1,45 @@
 import React from "react";
 const FormThird =({requestRegister , nametag})=>
 {
-   function name() {
-     
-   }
+    //global varible set value check
+    let req_name ;
+    //verify name
+    const verify_name =(event)=>
+    {
+        event.preventDefault(); // not refresh
+        axios({method : 'POST' ,url : 'http://localhost:8000/api/register/name-verify',
+        data :{
+            name : req_name
+        } })
+        .then((respon)=>
+        {
+            if(respon.data.status === 'no')
+                    {
+                        document.querySelector("#text-code-102").innerHTML = "This account already has a user.";
+                        document.querySelector("#text-code-102").style.color = "pink"; 
+
+                    }else
+                    {
+                        if(req_name)
+                        {
+                            if(req_name.length < 4)
+                            {
+                                document.querySelector("#text-code-102").style.color = "pink"; 
+                                document.querySelector("#text-code-102").innerHTML = "Username must be more than 4 characters.";
+                            }
+                            else
+                            {
+                                document.querySelector("#text-code-102").style.color = "#42ec6b"; 
+                                document.querySelector("#text-code-102").innerHTML = "Account is available";
+                            }
+                        }
+                        else    
+                        {
+                            document.querySelector("#text-code-102").innerHTML = null;
+                        }
+                    }
+        });
+    }
     return(
         <>
             {/* form step three  */}

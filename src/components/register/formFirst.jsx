@@ -4,7 +4,7 @@ import axios  from "axios";
 import '../css/Register.css'
 
 const FormFirst = ({ email, day, month, year }) => {
-    //global varuble set value check
+    //global varible set value check
     let req_email ;
     // Func autoTab
     const auto = (id, id_tab, leng) => {
@@ -46,7 +46,7 @@ const FormFirst = ({ email, day, month, year }) => {
 
     }
     // api verify email 
-    function validator_email(event)
+    function verify_email(event)
     {
         event.preventDefault(); // not refresh
         axios({method : 'POST' ,url : 'http://localhost:8000/api/register/email-verify',
@@ -93,7 +93,7 @@ const FormFirst = ({ email, day, month, year }) => {
                     // input value email
                     onChange={(event) => { email(event.target.value) ;
                         req_email = event.target.value  ;
-                        validator_email(event); }}
+                        verify_email(event); }}
                     type="email" class="form-control" id="email" aria-describedby="emailHelp" />
                 <div id="text-code-101" class="form-text">This email will be used to edit information.</div>
             </div>
