@@ -6,7 +6,6 @@ import '../css/Register.css'
 const FormFirst = ({ email, day, month, year }) => {
     //global varible set value check
     let req_email  ;
-    var  respon_email ;
     // Func autoTab
     const auto = (id, id_tab, leng) => {
         // if password > value.dd/mm/yyyy
@@ -31,7 +30,9 @@ const FormFirst = ({ email, day, month, year }) => {
         if (document.getElementById("yyyy").value.length < 4 || document.getElementById("yyyy").value.length > 4) {
             validate.push("err")
         }
-        if (validate.length == 0) {
+        
+        if (validate.length === 0) {
+            console.log(err_email);
             document.getElementById("errs-log-code-01").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
             document.getElementById("btn-next").click();
@@ -40,6 +41,11 @@ const FormFirst = ({ email, day, month, year }) => {
             document.getElementById("errs-log-code-01").innerHTML = "Please fill the correct information.";
             document.getElementById("errs-log-code-01").style.color = "pink";
         }
+
+    }
+    //cehck err
+    const func_err=()=>
+    {
 
     }
     // api verify email 
@@ -56,9 +62,10 @@ const FormFirst = ({ email, day, month, year }) => {
                     {
                         document.querySelector("#text-code-101").innerHTML = "This email already has a user.";
                         document.querySelector("#text-code-101").style.color = "pink"; 
-
+                        
                     }else
                     {
+                        
                         if(req_email)
                         {
                             if(req_email.length < 15)
@@ -122,7 +129,7 @@ const FormFirst = ({ email, day, month, year }) => {
             </div>
             <div class="mb-3" id="errs-log-code-01"></div>
             <button
-                onClick={validator}
+                onClick={validator(()=>{})}
                 id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
             >Next <i className="fas fa-caret-right"></i></button>
 
