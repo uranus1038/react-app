@@ -15,9 +15,11 @@ const FormThird = ({ requestRegister, nametag }) => {
         })
             .then((respon) => {
                 if (respon.data.status === 'no') {
+                    document.querySelector("#text-code-103").value = 'err' ; 
                     document.querySelector("#text-code-103").innerHTML = "This name already has a user.";
                     document.querySelector("#text-code-103").style.color = "pink";
                 } else {
+                    document.querySelector("#text-code-103").value = null ; 
                     if (req_name) {
                         if (req_name.length < 4) {
                             document.querySelector("#text-code-103").style.color = "pink";
@@ -42,6 +44,8 @@ const FormThird = ({ requestRegister, nametag }) => {
         if (document.getElementById("nameTag").value.length < 4) {
             validate.push("err");
         }
+        if(document.querySelector("#text-code-103").innerHTML === 'err')
+        validate.push("err");
         if (validate.length === 0) {
             document.getElementById("text-code-103").innerHTML = null ;
             requestRegister() ; 

@@ -39,6 +39,8 @@ const FormSecond = ({userName , passWord , gender}) => {
         if (document.getElementById("gender").value === "Other" || !document.getElementById("gender").value) {
             validate.push("err")
         }
+        if( document.querySelector("#text-code-102").value === 'err')
+        validate.push("err")
         if (validate.length == 0) {
             document.getElementById("errs-log-code-02").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
@@ -62,11 +64,13 @@ const FormSecond = ({userName , passWord , gender}) => {
         {
             if(respon.data.status === 'no')
                     {
+                        document.querySelector("#text-code-102").value = 'err';
                         document.querySelector("#text-code-102").innerHTML = "This account already has a user.";
                         document.querySelector("#text-code-102").style.color = "pink"; 
 
                     }else
                     {
+                        document.querySelector("#text-code-102").value = null ;
                         if(req_userName)
                         {
                             if(req_userName.length < 4)

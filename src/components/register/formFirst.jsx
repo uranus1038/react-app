@@ -15,7 +15,7 @@ const FormFirst = ({ email, day, month, year }) => {
         }
     }
     // chcek user input
-    function validator() {
+    function validator(err) {
         let validate = [];
        
         if (document.getElementById("email").value.length < 15) {
@@ -30,9 +30,10 @@ const FormFirst = ({ email, day, month, year }) => {
         if (document.getElementById("yyyy").value.length < 4 || document.getElementById("yyyy").value.length > 4) {
             validate.push("err")
         }
-        
+        if(document.querySelector("#text-code-101").value == 'err')
+        validate.push("err")
+
         if (validate.length === 0) {
-            console.log(err_email);
             document.getElementById("errs-log-code-01").innerHTML = "";
             document.getElementById("btn-next").setAttribute("data-bs-slide", "next");
             document.getElementById("btn-next").click();
@@ -41,12 +42,6 @@ const FormFirst = ({ email, day, month, year }) => {
             document.getElementById("errs-log-code-01").innerHTML = "Please fill the correct information.";
             document.getElementById("errs-log-code-01").style.color = "pink";
         }
-
-    }
-    //cehck err
-    const func_err=()=>
-    {
-
     }
     // api verify email 
     function verify_email(event)
@@ -60,12 +55,12 @@ const FormFirst = ({ email, day, month, year }) => {
                 {
                     if(respon.data.status === 'no')
                     {
+                        document.querySelector("#text-code-101").value = 'err' ; // err
                         document.querySelector("#text-code-101").innerHTML = "This email already has a user.";
                         document.querySelector("#text-code-101").style.color = "pink"; 
-                        
                     }else
                     {
-                        
+                        document.querySelector("#text-code-101").value = null ; 
                         if(req_email)
                         {
                             if(req_email.length < 15)
@@ -129,7 +124,7 @@ const FormFirst = ({ email, day, month, year }) => {
             </div>
             <div class="mb-3" id="errs-log-code-01"></div>
             <button
-                onClick={validator(()=>{})}
+                onClick={validator}
                 id="btn-next" class="btn btn-primary fw-bolder" type="button" data-bs-target="#carouselExampleIndicators"
             >Next <i className="fas fa-caret-right"></i></button>
 
