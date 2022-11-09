@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 //css
-import '../css/Navbar.css';
+import '../css/bgColor.css';
 
 
 const Navbar = () => {

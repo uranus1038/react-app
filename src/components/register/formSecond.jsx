@@ -64,7 +64,7 @@ const FormSecond = ({userName , passWord , gender}) => {
         {
             if(respon.data.status === 'no')
                     {
-                        document.querySelector("#text-code-102").value = 'err';
+                        document.querySelector("#text-code-102").value = 'err'; 
                         document.querySelector("#text-code-102").innerHTML = "This account already has a user.";
                         document.querySelector("#text-code-102").style.color = "pink"; 
 

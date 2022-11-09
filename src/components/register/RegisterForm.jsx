@@ -1,8 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 //css
-import '../css/Register.css'
+import '../css/bgColor.css'
 
 //Components
 import FormFirst from "./formFirst";
@@ -10,6 +11,8 @@ import FormSecond from "./formSecond";
 import FormThird from "./formThird";
 
 const RegisterForm = () => {
+    // navigate 
+    const Linkx = useNavigate(); 
     //setState
     const [email , setEmail ] = useState("")
     const [day , setDay ] = useState("")
@@ -34,7 +37,7 @@ const RegisterForm = () => {
        }).then((respon)=>{
         if(respon.data.status === "ok")
         {
-           return  window.location.replace('/');
+           return  window.location.replace('/login');
         }
         else
         {
@@ -64,7 +67,7 @@ const RegisterForm = () => {
                                 </div>
                                 <hr className="text-white" />
                                 <div className="text-info text-center">
-                                    You have an account? <a href="" class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
+                                    You have an account? <a style={{cursor : "pointer"} } onClick={()=>{Linkx('/login')}} class="text-white fw-bolder"><i class="fa fa-rocket" ></i> Sign-in</a>
                                 </div>
                            
                         </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import axios  from "axios";
 //css
-import '../css/Register.css'
 
 const FormFirst = ({ email, day, month, year }) => {
     //global varible set value check
