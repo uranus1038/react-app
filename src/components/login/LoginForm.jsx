@@ -56,6 +56,7 @@ const LoginForm = () => {
                                     onChange={(event) => {
                                         setUser(event.target.value);
                                     }
+                                    
                                     }
                                     value ={userName}
                                     type="text" class="form-control" id="userName" aria-describedby="emailHelp" />
