@@ -30,10 +30,10 @@ const FormSecond = ({userName , passWord , gender}) => {
         if (document.getElementById("userName").value.length < 4) {
             validate.push("err");
         }
-        if (document.getElementById("passWord").value.length < 8) {
-            validate.push("err");  
+        if (document.getElementById("userName").value.length > 15){
+             validate.push("err");
         }
-        if (document.getElementById("text-code-102").innerHTML === "This account already has a user.") {
+        if (document.getElementById("passWord").value.length < 8) {
             validate.push("err");  
         }
         if (document.getElementById("gender").value === "Other" || !document.getElementById("gender").value) {
@@ -80,8 +80,16 @@ const FormSecond = ({userName , passWord , gender}) => {
                             }
                             else
                             {
-                                document.querySelector("#text-code-102").style.color = "#42ec6b"; 
-                                document.querySelector("#text-code-102").innerHTML = "Account is available";
+                                if(req_userName.length >3 && req_userName.length <16)
+                                {
+                                    document.querySelector("#text-code-102").style.color = "#42ec6b"; 
+                                    document.querySelector("#text-code-102").innerHTML = "Account is available";
+                                }
+                                else
+                                {
+                                    document.querySelector("#text-code-102").innerHTML = "Characters must not exceed 15 characters";
+                                    document.querySelector("#text-code-102").style.color = "pink"; 
+                                }
                             }
                         }
                         else    
